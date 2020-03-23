@@ -11,13 +11,15 @@ Extensions for setting up an Orchard Core application.
 
 ### Logged in user authentication for API requests
 
-A service configuration that will authenticate every API request to be able to run the setup even for the Default tenant.
+A service configuration that will authenticate every API request to be able to run the setup even for the Default tenant (when the application is configured to do so).
 
 This is achieved by calling the `AddOrchardCmsWithAuthorizedApiRequests` extension method on the service collection when setting up the application (startup project => Startup.cs => ConfigureServices method).
 
-When starting the application, the `AuthorizeOrchardApiRequests` setting has to be set to true either the launch settings or when starting the application through the dotnet CLI.
+When starting the application, the `AuthorizeOrchardApiRequests` setting has to be set to true either in the launch settings or when starting the application through the dotnet CLI.
 
 Example: `dotnet Lombiq.AwesomeApp.dll --AuthorizeOrchardApiRequests true`
+
+Without this setting, API requests will be authenticated as usual, so it's safe to run/deploy the application with this project as long as the setting above is not set to true.
 
 
 ## Contributing
