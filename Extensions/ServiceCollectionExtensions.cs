@@ -1,4 +1,4 @@
-﻿using Lombiq.SetupExtensions.Apis.Context;
+using Lombiq.SetupExtensions.Apis.Context;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -31,16 +31,16 @@ namespace Lombiq.SetupExtensions.Extensions
                 {
                     builder
                         .AddSetupFeatures("OrchardCore.Tenants")
-                        .ConfigureServices(collection =>
+                        .ConfigureServices(services =>
                         {
-                            collection.AddScoped<IAuthorizationHandler, PermissionContextAuthorizationHandler>(sp =>
+                            services.AddScoped<IAuthorizationHandler, PermissionContextAuthorizationHandler>(sp =>
                             {
                                 return new PermissionContextAuthorizationHandler(
                                     sp.GetRequiredService<IHttpContextAccessor>(),
                                     new ConcurrentDictionary<string, PermissionsContext>());
                             });
 
-                            collection.AddAuthentication((options) =>
+                            services.AddAuthentication((options) =>
                             {
                                 options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null);
                             });
