@@ -2,7 +2,7 @@
 
 
 
-## Project Description
+## About
 
 Extensions for setting up an Orchard Core application.
 
@@ -21,8 +21,8 @@ Without this setting, API requests will be authenticated as usual, so it's safe 
 Example: `dotnet Lombiq.AwesomeApp.dll --AuthorizeOrchardApiRequests true`
 
 
-## Contributing
+## Contribution and support
 
-Bug reports, feature requests, comments and code contributions are warmly welcome, **please do so via GitHub**.
+Bug reports, feature requests, comments, questions, code contributions, and love letters are warmly welcome, please do so via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
 
-This project is developed by [Lombiq Technologies Ltd](https://lombiq.com/). Commercial-grade support is available through Lombiq.
+This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
