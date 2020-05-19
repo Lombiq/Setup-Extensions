@@ -1,4 +1,4 @@
-# Setup Extensions
+# Lombiq Setup Extensions
 
 
 
@@ -7,7 +7,7 @@
 Extensions for setting up an Orchard Core application.
 
 
-## Includes
+## Features
 
 ### Logged in user authentication for API requests
 
