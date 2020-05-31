@@ -13,16 +13,17 @@ namespace Lombiq.SetupExtensions.Extensions
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Configures Orchard CMS with all API requests authorized if the specified configuration value
-        /// (<see cref="AuthorizeOrchardApiRequests"/>) is set to "true".
-        /// Also allows optional Orchard CMS configuration on top of that.
-        /// Copied from SiteStartup.cs in OrchardCore.Tests.Apis.Context with modifications.
+        /// Configures Orchard Core CMS with all API requests as authorized, i.e. all API endpoints will be accessible
+        /// without further authorization if the specified configuration value (<see
+        /// cref="AuthorizeOrchardApiRequests"/>) is set to "true".
         /// </summary>
-        /// <param name="services">Service collection instance from the Startup class' ConfigureServices method.</param>
-        /// <param name="configuration">Application configuration.</param>
+        /// <param name="services">Service collection instance from the Startup class' ConfigureServices
+        /// method.</param>
+        /// <param name="configuration">
+        /// Application configuration where to read the <see cref="AuthorizeOrchardApiRequests"/> key from.
+        /// </param>
         /// <param name="orchardCoreBuilder">Optional action to define further Orchard CMS configuration.</param>
-        /// <returns></returns>
-        public static IServiceCollection AddOrchardCmsWithAuthorizedApiRequests(
+        public static IServiceCollection AddOrchardCmsWithAuthorizedApiRequestsIfEnabled(
             this IServiceCollection services,
             IConfiguration configuration,
             Action<OrchardCoreBuilder> orchardCoreBuilder = default) =>
