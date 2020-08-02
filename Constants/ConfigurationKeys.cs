@@ -1,4 +1,4 @@
-﻿namespace Lombiq.SetupExtensions.Constants
+namespace Lombiq.SetupExtensions.Constants
 {
     public static class Configuration
     {
