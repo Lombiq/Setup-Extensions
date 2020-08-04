@@ -50,7 +50,9 @@ This is achieved by using one of the extension methods in the applications's `St
 
 When starting the application, the `AuthorizeOrchardApiRequests` setting has to be set to `true` either in the launch settings or when starting the application through the `dotnet` CLI. Without this setting, API requests will be authenticated as usual, so it's safe to run/deploy the application with this project as long as the setting above is not set to `true`.
 
-Example: `dotnet Lombiq.AwesomeApp.dll --AuthorizeOrchardApiRequests true`
+Example: `dotnet Lombiq.AwesomeApp.dll --AuthorizeOrchardApiRequests true`.
+
+You can use [the Reset-OrchardCoreApp script from the Utility Scripts project](https://github.com/Lombiq/Utility-Scripts) to quickly reset and reinstall a local Orchard Core app configured with this.
 
 
 ## Contribution and support
