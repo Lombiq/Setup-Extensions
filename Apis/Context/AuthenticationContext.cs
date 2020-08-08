@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -80,7 +80,7 @@ namespace Lombiq.SetupExtensions.Apis.Context
     {
         public IEnumerable<Permission> AuthorizedPermissions { get; set; } = Enumerable.Empty<Permission>();
 
-        public bool UsePermissionsContext { get; set; } = false;
+        public bool UsePermissionsContext { get; set; }
     }
 
     internal class AlwaysLoggedInIdentity : IIdentity
