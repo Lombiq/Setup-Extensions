@@ -11,9 +11,7 @@ using System.Security.Principal;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Copied from AuthenticationContext.cs in OrchardCore.Tests.Apis.Context with minor modifications.
-/// </summary>
+// Copied from AuthenticationContext.cs in OrchardCore.Tests.Apis.Context with minor modifications.
 namespace Lombiq.SetupExtensions.Apis.Context
 {
     internal class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
