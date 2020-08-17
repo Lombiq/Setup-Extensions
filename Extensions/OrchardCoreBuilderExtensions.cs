@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Concurrent;
-using static Lombiq.SetupExtensions.Constants.Configuration;
+using static Lombiq.SetupExtensions.Constants.ConfigurationKeys;
 
 namespace Lombiq.SetupExtensions.Extensions
 {

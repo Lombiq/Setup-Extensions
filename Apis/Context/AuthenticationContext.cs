@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
@@ -11,9 +11,7 @@ using System.Security.Principal;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Copied from AuthenticationContext.cs in OrchardCore.Tests.Apis.Context with minor modifications.
-/// </summary>
+// Copied from AuthenticationContext.cs in OrchardCore.Tests.Apis.Context with minor modifications.
 namespace Lombiq.SetupExtensions.Apis.Context
 {
     internal class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
@@ -34,10 +32,8 @@ namespace Lombiq.SetupExtensions.Apis.Context
             }
         }
 
-        public PermissionContextAuthorizationHandler(PermissionsContext permissionsContext)
-        {
-            _permissionsContext = permissionsContext;
-        }
+        public PermissionContextAuthorizationHandler(PermissionsContext permissionsContext) => _permissionsContext = permissionsContext;
+
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
         {
@@ -80,7 +76,7 @@ namespace Lombiq.SetupExtensions.Apis.Context
     {
         public IEnumerable<Permission> AuthorizedPermissions { get; set; } = Enumerable.Empty<Permission>();
 
-        public bool UsePermissionsContext { get; set; } = false;
+        public bool UsePermissionsContext { get; set; }
     }
 
     internal class AlwaysLoggedInIdentity : IIdentity
