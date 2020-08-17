@@ -32,10 +32,8 @@ namespace Lombiq.SetupExtensions.Apis.Context
             }
         }
 
-        public PermissionContextAuthorizationHandler(PermissionsContext permissionsContext)
-        {
-            _permissionsContext = permissionsContext;
-        }
+        public PermissionContextAuthorizationHandler(PermissionsContext permissionsContext) => _permissionsContext = permissionsContext;
+
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
         {
