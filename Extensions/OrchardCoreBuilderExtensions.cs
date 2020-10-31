@@ -28,7 +28,11 @@ namespace Lombiq.SetupExtensions.Extensions
         /// Configures all API requests as authorized, i.e. all API endpoints will be accessible without further
         /// authorization.
         /// </summary>
-        /// <remarks>Copied from SiteStartup.cs in OrchardCore.Tests.Apis.Context with modifications.</remarks>
+        /// <remarks>
+        /// <para>
+        /// Copied from SiteStartup.cs in OrchardCore.Tests.Apis.Context with modifications.
+        /// </para>
+        /// </remarks>
         public static OrchardCoreBuilder AuthorizeApiRequests(this OrchardCoreBuilder builder) =>
             builder
                 .AddSetupFeatures("OrchardCore.Tenants")
