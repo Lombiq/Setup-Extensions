@@ -26,29 +26,25 @@ namespace Lombiq.SetupExtensions.Extensions
             this IServiceCollection services,
             IConfiguration configuration,
             Action<OrchardCoreBuilder> orchardCoreBuilder = default) =>
-            configuration.GetValue<bool>(AuthorizeOrchardApiRequests) ?
-                services.AddOrchardCms(builder =>
-                {
-                    builder
-                        .AddSetupFeatures("OrchardCore.Tenants")
-                        .ConfigureServices(services =>
-                        {
-                            services.AddScoped<IAuthorizationHandler, PermissionContextAuthorizationHandler>(sp =>
+            configuration.GetValue<bool>(AuthorizeOrchardApiRequests)
+                ? services.AddOrchardCms(builder =>
+                    {
+                        builder
+                            .AddSetupFeatures("OrchardCore.Tenants")
+                            .ConfigureServices(services =>
                             {
-                                return new PermissionContextAuthorizationHandler(
-                                    sp.GetRequiredService<IHttpContextAccessor>(),
-                                    new ConcurrentDictionary<string, PermissionsContext>());
-                            });
+                                services.AddScoped<IAuthorizationHandler, PermissionContextAuthorizationHandler>(sp =>
+                                    new PermissionContextAuthorizationHandler(
+                                        sp.GetRequiredService<IHttpContextAccessor>(),
+                                        new ConcurrentDictionary<string, PermissionsContext>()));
 
-                            services.AddAuthentication((options) =>
-                            {
-                                options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null);
-                            });
-                        })
-                        .Configure(appBuilder => appBuilder.UseAuthorization());
+                                services.AddAuthentication(
+                                    options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null));
+                            })
+                            .Configure(appBuilder => appBuilder.UseAuthorization());
 
-                    orchardCoreBuilder?.Invoke(builder);
-                }) :
-                services.AddOrchardCms(orchardCoreBuilder);
+                        orchardCoreBuilder?.Invoke(builder);
+                    })
+                : services.AddOrchardCms(orchardCoreBuilder);
     }
 }
