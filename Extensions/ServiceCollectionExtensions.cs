@@ -14,11 +14,10 @@ namespace Lombiq.SetupExtensions.Extensions
     {
         /// <summary>
         /// Configures Orchard Core CMS with all API requests as authorized, i.e. all API endpoints will be accessible
-        /// without further authorization if the specified configuration value (<see
+        /// without further authorization if the specified configuration value ( <see
         /// cref="AuthorizeOrchardApiRequests"/>) is set to "true".
         /// </summary>
-        /// <param name="services">Service collection instance from the Startup class' ConfigureServices
-        /// method.</param>
+        /// <param name="services">Service collection instance from the Startup class' ConfigureServices method.</param>
         /// <param name="configuration">
         /// Application configuration where to read the <see cref="AuthorizeOrchardApiRequests"/> key from.
         /// </param>

@@ -29,9 +29,7 @@ namespace Lombiq.SetupExtensions.Extensions
         /// authorization.
         /// </summary>
         /// <remarks>
-        /// <para>
-        /// Copied from SiteStartup.cs in OrchardCore.Tests.Apis.Context with modifications.
-        /// </para>
+        /// <para>Copied from SiteStartup.cs in OrchardCore.Tests.Apis.Context with modifications.</para>
         /// </remarks>
         public static OrchardCoreBuilder AuthorizeApiRequests(this OrchardCoreBuilder builder) =>
             builder
