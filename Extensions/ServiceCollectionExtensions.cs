@@ -14,11 +14,10 @@ namespace Lombiq.SetupExtensions.Extensions
     {
         /// <summary>
         /// Configures Orchard Core CMS with all API requests as authorized, i.e. all API endpoints will be accessible
-        /// without further authorization if the specified configuration value (<see
+        /// without further authorization if the specified configuration value ( <see
         /// cref="AuthorizeOrchardApiRequests"/>) is set to "true".
         /// </summary>
-        /// <param name="services">Service collection instance from the Startup class' ConfigureServices
-        /// method.</param>
+        /// <param name="services">Service collection instance from the Startup class' ConfigureServices method.</param>
         /// <param name="configuration">
         /// Application configuration where to read the <see cref="AuthorizeOrchardApiRequests"/> key from.
         /// </param>
@@ -27,29 +26,25 @@ namespace Lombiq.SetupExtensions.Extensions
             this IServiceCollection services,
             IConfiguration configuration,
             Action<OrchardCoreBuilder> orchardCoreBuilder = default) =>
-            configuration.GetValue<bool>(AuthorizeOrchardApiRequests) ?
-                services.AddOrchardCms(builder =>
-                {
-                    builder
-                        .AddSetupFeatures("OrchardCore.Tenants")
-                        .ConfigureServices(services =>
-                        {
-                            services.AddScoped<IAuthorizationHandler, PermissionContextAuthorizationHandler>(sp =>
+            configuration.GetValue<bool>(AuthorizeOrchardApiRequests)
+                ? services.AddOrchardCms(builder =>
+                    {
+                        builder
+                            .AddSetupFeatures("OrchardCore.Tenants")
+                            .ConfigureServices(services =>
                             {
-                                return new PermissionContextAuthorizationHandler(
-                                    sp.GetRequiredService<IHttpContextAccessor>(),
-                                    new ConcurrentDictionary<string, PermissionsContext>());
-                            });
+                                services.AddScoped<IAuthorizationHandler, PermissionContextAuthorizationHandler>(sp =>
+                                    new PermissionContextAuthorizationHandler(
+                                        sp.GetRequiredService<IHttpContextAccessor>(),
+                                        new ConcurrentDictionary<string, PermissionsContext>()));
 
-                            services.AddAuthentication((options) =>
-                            {
-                                options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null);
-                            });
-                        })
-                        .Configure(appBuilder => appBuilder.UseAuthorization());
+                                services.AddAuthentication(
+                                    options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null));
+                            })
+                            .Configure(appBuilder => appBuilder.UseAuthorization());
 
-                    orchardCoreBuilder?.Invoke(builder);
-                }) :
-                services.AddOrchardCms(orchardCoreBuilder);
+                        orchardCoreBuilder?.Invoke(builder);
+                    })
+                : services.AddOrchardCms(orchardCoreBuilder);
     }
 }
