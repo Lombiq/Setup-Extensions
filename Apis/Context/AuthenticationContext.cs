@@ -18,7 +18,6 @@ namespace Lombiq.SetupExtensions.Apis.Context
     {
         private readonly PermissionsContext _permissionsContext;
 
-
         public PermissionContextAuthorizationHandler(IHttpContextAccessor httpContextAccessor, IDictionary<string, PermissionsContext> permissionsContexts)
         {
             _permissionsContext = new PermissionsContext();
@@ -33,7 +32,6 @@ namespace Lombiq.SetupExtensions.Apis.Context
         }
 
         public PermissionContextAuthorizationHandler(PermissionsContext permissionsContext) => _permissionsContext = permissionsContext;
-
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
         {
