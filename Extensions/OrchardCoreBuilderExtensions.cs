@@ -3,26 +3,27 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Concurrent;
 using static Lombiq.SetupExtensions.Constants.ConfigurationKeys;
 
-namespace Lombiq.SetupExtensions.Extensions
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class OrchardCoreBuilderExtensions
     {
         /// <summary>
         /// Configures all API requests as authorized, i.e. all API endpoints will be accessible without further
         /// authorization if the specified configuration value (<see cref="AuthorizeOrchardApiRequests"/>) is set to
-        /// "true".
+        /// <see langword="true" />.
         /// </summary>
         /// <param name="configuration">
         /// Application configuration where to read the <see cref="AuthorizeOrchardApiRequests"/> key from.
         /// </param>
-        public static OrchardCoreBuilder AuthorizeApiRequestsIfEnabled(this OrchardCoreBuilder builder, IConfiguration configuration) =>
-            configuration.GetValue<bool>(AuthorizeOrchardApiRequests) ?
-                builder.AuthorizeApiRequests() :
-                builder;
+        public static OrchardCoreBuilder AuthorizeApiRequestsIfEnabled(
+            this OrchardCoreBuilder builder,
+            IConfiguration configuration) =>
+            configuration.GetValue<bool>(AuthorizeOrchardApiRequests)
+                ? builder.AuthorizeApiRequests()
+                : builder;
 
         /// <summary>
         /// Configures all API requests as authorized, i.e. all API endpoints will be accessible without further
@@ -41,7 +42,8 @@ namespace Lombiq.SetupExtensions.Extensions
                             sp.GetRequiredService<IHttpContextAccessor>(),
                             new ConcurrentDictionary<string, PermissionsContext>()));
 
-                    services.AddAuthentication((options) => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null));
+                    services.AddAuthentication(
+                        options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null));
                 })
                 .Configure(appBuilder => appBuilder.UseAuthorization());
     }

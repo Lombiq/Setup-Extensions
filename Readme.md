@@ -31,9 +31,6 @@ This is achieved by using one of the extension methods in the applications's `St
             // Set it up via an AddOrchardCms() argument.
             services.AddOrchardCms(builder => builder.AuthorizeApiRequestsIfEnabled(_configuration));
 
-            // Or use the all-in-one extension:
-            services.AddOrchardCmsWithAuthorizedApiRequestsIfEnabled(_configuration);
-
             // Enable it based on your own logic:
             services.AddOrchardCms(builder =>
             {
