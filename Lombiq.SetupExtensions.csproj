@@ -12,10 +12,10 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Application.Cms.Targets" Version="1.0.0-rc2-13450" />
-    <PackageReference Include="OrchardCore.Infrastructure" Version="1.0.0-rc2-13450" />
+    <PackageReference Include="OrchardCore.Abstractions" Version="1.0.0" />
+    <PackageReference Include="OrchardCore.Infrastructure" Version="1.0.0" />
   </ItemGroup>
-  
+
 </Project>
