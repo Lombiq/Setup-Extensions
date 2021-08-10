@@ -18,7 +18,9 @@ namespace Lombiq.SetupExtensions.Apis.Context
     {
         private readonly PermissionsContext _permissionsContext;
 
-        public PermissionContextAuthorizationHandler(IHttpContextAccessor httpContextAccessor, IDictionary<string, PermissionsContext> permissionsContexts)
+        public PermissionContextAuthorizationHandler(
+            IHttpContextAccessor httpContextAccessor,
+            IDictionary<string, PermissionsContext> permissionsContexts)
         {
             _permissionsContext = new PermissionsContext();
 
