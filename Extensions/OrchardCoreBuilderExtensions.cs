@@ -41,9 +41,6 @@ namespace Microsoft.Extensions.DependencyInjection
                         new PermissionContextAuthorizationHandler(
                             sp.GetRequiredService<IHttpContextAccessor>(),
                             new ConcurrentDictionary<string, PermissionsContext>()));
-
-                    //services.AddAuthentication(
-                    //    options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null));
                 })
                 .Configure(appBuilder => appBuilder.UseAuthorization());
     }
