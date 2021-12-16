@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Abstractions" Version="1.0.0" />
-    <PackageReference Include="OrchardCore.Infrastructure" Version="1.0.0" />
+    <PackageReference Include="OrchardCore.Abstractions" Version="1.1.0" />
+    <PackageReference Include="OrchardCore.Infrastructure" Version="1.1.0" />
   </ItemGroup>
 
 </Project>
