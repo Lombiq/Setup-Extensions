@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Concurrent;
 using static Lombiq.SetupExtensions.Constants.ConfigurationKeys;
 
@@ -43,7 +44,7 @@ namespace Microsoft.Extensions.DependencyInjection
                             new ConcurrentDictionary<string, PermissionsContext>()));
 
                     services.AddAuthentication(
-                        options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null));
+                        options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", displayName: null));
                 })
                 .Configure(appBuilder => appBuilder.UseAuthorization());
     }
