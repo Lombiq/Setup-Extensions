@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using System;
 using System.Collections.Concurrent;
 using static Lombiq.SetupExtensions.Constants.ConfigurationKeys;
 
