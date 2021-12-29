@@ -43,7 +43,7 @@ namespace Microsoft.Extensions.DependencyInjection
                             new ConcurrentDictionary<string, PermissionsContext>()));
 
                     services.AddAuthentication(
-                        options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", null));
+                        options => options.AddScheme<AlwaysLoggedInApiAuthenticationHandler>("Api", displayName: null));
                 })
                 .Configure(appBuilder => appBuilder.UseAuthorization());
     }
