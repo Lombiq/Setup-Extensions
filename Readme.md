@@ -2,6 +2,9 @@
 
 
 
+[![Lombiq.SetupExtensions NuGet](https://img.shields.io/nuget/v/Lombiq.SetupExtensions?label=Lombiq.SetupExtensions)](https://www.nuget.org/packages/Lombiq.SetupExtensions/)
+
+
 ## About
 
 Extensions for setting up an Orchard Core application.
