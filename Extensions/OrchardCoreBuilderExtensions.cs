@@ -12,8 +12,8 @@ public static class OrchardCoreBuilderExtensions
 {
     /// <summary>
     /// Configures all API requests as authorized, i.e. all API endpoints will be accessible without further
-    /// authorization if the specified configuration value (<see cref="AuthorizeOrchardApiRequests"/>) is set to
-    /// <see langword="true" />.
+    /// authorization if the specified configuration value ( <see cref="AuthorizeOrchardApiRequests"/>) is set to <see
+    /// langword="true"/>.
     /// </summary>
     /// <param name="configuration">
     /// Application configuration where to read the <see cref="AuthorizeOrchardApiRequests"/> key from.
