@@ -12,79 +12,78 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 // Copied from AuthenticationContext.cs in OrchardCore.Tests.Apis.Context with minor modifications.
-namespace Lombiq.SetupExtensions.Apis.Context
+namespace Lombiq.SetupExtensions.Apis.Context;
+
+internal class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
 {
-    internal class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
+    private readonly PermissionsContext _permissionsContext;
+
+    public PermissionContextAuthorizationHandler(
+        IHttpContextAccessor httpContextAccessor,
+        IDictionary<string, PermissionsContext> permissionsContexts)
     {
-        private readonly PermissionsContext _permissionsContext;
+        _permissionsContext = new PermissionsContext();
 
-        public PermissionContextAuthorizationHandler(
-            IHttpContextAccessor httpContextAccessor,
-            IDictionary<string, PermissionsContext> permissionsContexts)
+        var requestContext = httpContextAccessor.HttpContext.Request;
+
+        if (requestContext?.Headers.ContainsKey("PermissionsContext") == true &&
+            permissionsContexts.TryGetValue(requestContext.Headers["PermissionsContext"], out var permissionsContext))
         {
-            _permissionsContext = new PermissionsContext();
-
-            var requestContext = httpContextAccessor.HttpContext.Request;
-
-            if (requestContext?.Headers.ContainsKey("PermissionsContext") == true &&
-                permissionsContexts.TryGetValue(requestContext.Headers["PermissionsContext"], out var permissionsContext))
-            {
-                _permissionsContext = permissionsContext;
-            }
-        }
-
-        public PermissionContextAuthorizationHandler(PermissionsContext permissionsContext) => _permissionsContext = permissionsContext;
-
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
-        {
-            var permissions = (_permissionsContext.AuthorizedPermissions ?? Enumerable.Empty<Permission>()).ToList();
-
-            if (!_permissionsContext.UsePermissionsContext)
-            {
-                context.Succeed(requirement);
-            }
-            else if (permissions.Contains(requirement.Permission))
-            {
-                context.Succeed(requirement);
-            }
-            else
-            {
-                context.Fail();
-            }
-
-            return Task.CompletedTask;
+            _permissionsContext = permissionsContext;
         }
     }
 
-    internal class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<ApiAuthorizationOptions>
+    public PermissionContextAuthorizationHandler(PermissionsContext permissionsContext) => _permissionsContext = permissionsContext;
+
+    protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
     {
-        public AlwaysLoggedInApiAuthenticationHandler(
-            IOptionsMonitor<ApiAuthorizationOptions> options,
-            ILoggerFactory logger,
-            UrlEncoder encoder,
-            ISystemClock clock)
-            : base(options, logger, encoder, clock) { }
+        var permissions = (_permissionsContext.AuthorizedPermissions ?? Enumerable.Empty<Permission>()).ToList();
 
-        protected override Task<AuthenticateResult> HandleAuthenticateAsync() =>
-            Task.FromResult(
-                AuthenticateResult.Success(
-                    new AuthenticationTicket(
-                        new System.Security.Claims.ClaimsPrincipal(new AlwaysLoggedInIdentity()), "Api")));
+        if (!_permissionsContext.UsePermissionsContext)
+        {
+            context.Succeed(requirement);
+        }
+        else if (permissions.Contains(requirement.Permission))
+        {
+            context.Succeed(requirement);
+        }
+        else
+        {
+            context.Fail();
+        }
+
+        return Task.CompletedTask;
     }
+}
 
-    internal class PermissionsContext
-    {
-        public IEnumerable<Permission> AuthorizedPermissions { get; set; } = Enumerable.Empty<Permission>();
+internal class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<ApiAuthorizationOptions>
+{
+    public AlwaysLoggedInApiAuthenticationHandler(
+        IOptionsMonitor<ApiAuthorizationOptions> options,
+        ILoggerFactory logger,
+        UrlEncoder encoder,
+        ISystemClock clock)
+        : base(options, logger, encoder, clock) { }
 
-        public bool UsePermissionsContext { get; set; }
-    }
+    protected override Task<AuthenticateResult> HandleAuthenticateAsync() =>
+        Task.FromResult(
+            AuthenticateResult.Success(
+                new AuthenticationTicket(
+                    new System.Security.Claims.ClaimsPrincipal(new AlwaysLoggedInIdentity()), "Api")));
+}
 
-    internal class AlwaysLoggedInIdentity : IIdentity
-    {
-        public string AuthenticationType => "Always Authenticated";
+internal class PermissionsContext
+{
+    public IEnumerable<Permission> AuthorizedPermissions { get; set; } = Enumerable.Empty<Permission>();
 
-        public bool IsAuthenticated => true;
+    public bool UsePermissionsContext { get; set; }
+}
 
-        public string Name => "Lombiq Technologies";
-    }
+internal class AlwaysLoggedInIdentity : IIdentity
+{
+    public string AuthenticationType => "Always Authenticated";
+
+    public bool IsAuthenticated => true;
+
+    public string Name => "Lombiq Technologies";
 }

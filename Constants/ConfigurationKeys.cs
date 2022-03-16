@@ -1,7 +1,6 @@
-namespace Lombiq.SetupExtensions.Constants
+namespace Lombiq.SetupExtensions.Constants;
+
+public static class ConfigurationKeys
 {
-    public static class ConfigurationKeys
-    {
-        public const string AuthorizeOrchardApiRequests = nameof(AuthorizeOrchardApiRequests);
-    }
+    public const string AuthorizeOrchardApiRequests = nameof(AuthorizeOrchardApiRequests);
 }
