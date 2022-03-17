@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <DefaultItemExcludes>$(DefaultItemExcludes);.git*;node_modules\**</DefaultItemExcludes>
   </PropertyGroup>
 
@@ -32,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Abstractions" Version="1.2.2" />
-    <PackageReference Include="OrchardCore.Infrastructure" Version="1.2.2" />
+    <PackageReference Include="OrchardCore.Abstractions" Version="1.3.0" />
+    <PackageReference Include="OrchardCore.Infrastructure" Version="1.3.0" />
   </ItemGroup>
 
 </Project>
