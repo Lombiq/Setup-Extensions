@@ -16,7 +16,7 @@ A service configuration that will authenticate every API request to be able to r
 
 This is achieved by using one of the extension methods in the applications's `Startup` class:
 
-```
+```csharp
     public class Startup
     {
         private readonly IConfiguration _configuration;
