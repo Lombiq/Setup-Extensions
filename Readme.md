@@ -1,16 +1,12 @@
 # Lombiq Setup Extensions for Orchard Core
 
-
-
 [![Lombiq.SetupExtensions NuGet](https://img.shields.io/nuget/v/Lombiq.SetupExtensions?label=Lombiq.SetupExtensions)](https://www.nuget.org/packages/Lombiq.SetupExtensions/)
-
 
 ## About
 
 Extensions for setting up an Orchard Core application.
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
-
 
 ## Features
 
@@ -55,7 +51,6 @@ When starting the application, the `AuthorizeOrchardApiRequests` setting has to 
 Example: `dotnet Lombiq.AwesomeApp.dll --AuthorizeOrchardApiRequests true`.
 
 You can use [the Reset-OrchardCoreApp script from the Utility Scripts project](https://github.com/Lombiq/Utility-Scripts) to quickly reset and reinstall a local Orchard Core app configured with this.
-
 
 ## Contribution and support
 
