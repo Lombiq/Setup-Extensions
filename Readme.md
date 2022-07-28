@@ -1,16 +1,12 @@
 # Lombiq Setup Extensions for Orchard Core
 
-
-
 [![Lombiq.SetupExtensions NuGet](https://img.shields.io/nuget/v/Lombiq.SetupExtensions?label=Lombiq.SetupExtensions)](https://www.nuget.org/packages/Lombiq.SetupExtensions/)
-
 
 ## About
 
 Extensions for setting up an Orchard Core application.
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
-
 
 ## Features
 
@@ -20,7 +16,7 @@ A service configuration that will authenticate every API request to be able to r
 
 This is achieved by using one of the extension methods in the applications's `Startup` class:
 
-```
+```csharp
     public class Startup
     {
         private readonly IConfiguration _configuration;
@@ -56,9 +52,8 @@ Example: `dotnet Lombiq.AwesomeApp.dll --AuthorizeOrchardApiRequests true`.
 
 You can use [the Reset-OrchardCoreApp script from the Utility Scripts project](https://github.com/Lombiq/Utility-Scripts) to quickly reset and reinstall a local Orchard Core app configured with this.
 
-
 ## Contribution and support
 
-Bug reports, feature requests, comments, questions, code contributions, and love letters are warmly welcome, please do so via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
 
 This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
