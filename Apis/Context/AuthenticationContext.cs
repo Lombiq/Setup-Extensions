@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 // Copied from AuthenticationContext.cs in OrchardCore.Tests.Apis.Context with minor modifications.
 namespace Lombiq.SetupExtensions.Apis.Context;
 
-internal class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
+internal sealed class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
 {
     private readonly PermissionsContext _permissionsContext;
 
