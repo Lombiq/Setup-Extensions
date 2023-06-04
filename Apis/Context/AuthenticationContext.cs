@@ -56,7 +56,7 @@ internal sealed class PermissionContextAuthorizationHandler : AuthorizationHandl
     }
 }
 
-internal class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<ApiAuthorizationOptions>
+internal sealed class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<ApiAuthorizationOptions>
 {
     public AlwaysLoggedInApiAuthenticationHandler(
         IOptionsMonitor<ApiAuthorizationOptions> options,
@@ -72,14 +72,14 @@ internal class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<Ap
                     new System.Security.Claims.ClaimsPrincipal(new AlwaysLoggedInIdentity()), "Api")));
 }
 
-internal class PermissionsContext
+internal sealed class PermissionsContext
 {
     public IEnumerable<Permission> AuthorizedPermissions { get; set; } = Enumerable.Empty<Permission>();
 
     public bool UsePermissionsContext { get; set; }
 }
 
-internal class AlwaysLoggedInIdentity : IIdentity
+internal sealed class AlwaysLoggedInIdentity : IIdentity
 {
     public string AuthenticationType => "Always Authenticated";
 
