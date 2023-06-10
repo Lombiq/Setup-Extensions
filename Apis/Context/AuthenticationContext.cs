@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 // Copied from AuthenticationContext.cs in OrchardCore.Tests.Apis.Context with minor modifications.
 namespace Lombiq.SetupExtensions.Apis.Context;
 
-internal class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
+internal sealed class PermissionContextAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
 {
     private readonly PermissionsContext _permissionsContext;
 
@@ -56,7 +56,7 @@ internal class PermissionContextAuthorizationHandler : AuthorizationHandler<Perm
     }
 }
 
-internal class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<ApiAuthorizationOptions>
+internal sealed class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<ApiAuthorizationOptions>
 {
     public AlwaysLoggedInApiAuthenticationHandler(
         IOptionsMonitor<ApiAuthorizationOptions> options,
@@ -72,14 +72,14 @@ internal class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<Ap
                     new System.Security.Claims.ClaimsPrincipal(new AlwaysLoggedInIdentity()), "Api")));
 }
 
-internal class PermissionsContext
+internal sealed class PermissionsContext
 {
     public IEnumerable<Permission> AuthorizedPermissions { get; set; } = Enumerable.Empty<Permission>();
 
     public bool UsePermissionsContext { get; set; }
 }
 
-internal class AlwaysLoggedInIdentity : IIdentity
+internal sealed class AlwaysLoggedInIdentity : IIdentity
 {
     public string AuthenticationType => "Always Authenticated";
 
