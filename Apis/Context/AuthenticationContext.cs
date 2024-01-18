@@ -56,14 +56,11 @@ internal sealed class PermissionContextAuthorizationHandler : AuthorizationHandl
     }
 }
 
-internal sealed class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHandler<ApiAuthorizationOptions>
+internal sealed class AlwaysLoggedInApiAuthenticationHandler(
+    IOptionsMonitor<ApiAuthorizationOptions> options,
+    ILoggerFactory logger,
+    UrlEncoder encoder) : AuthenticationHandler<ApiAuthorizationOptions>(options, logger, encoder)
 {
-    public AlwaysLoggedInApiAuthenticationHandler(
-        IOptionsMonitor<ApiAuthorizationOptions> options,
-        ILoggerFactory logger,
-        UrlEncoder encoder)
-        : base(options, logger, encoder) { }
-
     protected override Task<AuthenticateResult> HandleAuthenticateAsync() =>
         Task.FromResult(
             AuthenticateResult.Success(
