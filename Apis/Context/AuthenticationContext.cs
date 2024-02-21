@@ -61,9 +61,8 @@ internal sealed class AlwaysLoggedInApiAuthenticationHandler : AuthenticationHan
     public AlwaysLoggedInApiAuthenticationHandler(
         IOptionsMonitor<ApiAuthorizationOptions> options,
         ILoggerFactory logger,
-        UrlEncoder encoder,
-        ISystemClock clock)
-        : base(options, logger, encoder, clock) { }
+        UrlEncoder encoder)
+        : base(options, logger, encoder) { }
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync() =>
         Task.FromResult(
