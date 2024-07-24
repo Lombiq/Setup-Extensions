@@ -31,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Abstractions" Version="2.0.0-preview-18268" />
-    <PackageReference Include="OrchardCore.Infrastructure" Version="2.0.0-preview-18268" />
+    <PackageReference Include="OrchardCore.Abstractions" Version="2.0.0-preview-18282" />
+    <PackageReference Include="OrchardCore.Infrastructure" Version="2.0.0-preview-18282" />
   </ItemGroup>
 
 </Project>
