@@ -34,7 +34,6 @@ public static class OrchardCoreBuilderExtensions
     /// </remarks>
     public static OrchardCoreBuilder AuthorizeApiRequests(this OrchardCoreBuilder builder) =>
         builder
-            .AddSetupFeatures("OrchardCore.Tenants")
             .ConfigureServices(services =>
             {
                 services.AddScoped<IAuthorizationHandler, PermissionContextAuthorizationHandler>(sp =>
