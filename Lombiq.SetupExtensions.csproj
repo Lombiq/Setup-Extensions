@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <!-- Overrides Orchard Core's vulnerable transitive version. -->
-    <PackageReference Include="AngleSharp" Version="1.9.1" />
+    <PackageReference Include="AngleSharp" Version="1.10.2" />
     <PackageReference Include="OrchardCore.Abstractions" Version="$(OrchardCoreVersion)" />
     <PackageReference Include="OrchardCore.Infrastructure" Version="$(OrchardCoreVersion)" />
   </ItemGroup>
